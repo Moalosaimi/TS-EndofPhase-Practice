@@ -19,6 +19,14 @@ Your goal is to write functions that interact with this data.
  * 
  * *************/
 
+// ✅ Step 1: Create a `Product` interface
+interface Product {
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+}
+
 // ✅ Sample data to test your functions
 const products: Product[] = [
     { id: 201, name: "Laptop", category: "Electronics", price: 999.99 },
@@ -35,6 +43,13 @@ Create a function `getProductName` that:
 - Returns the name of the product
 **************************************************************/
 
+function getProductName(product: Product): string {
+    return product.name
+}
+
+//////console.log(getProductName(products[0]))
+
+
 // console.log(getProductName(products[0])); // "Laptop"
 
 /**************************************************************
@@ -43,6 +58,13 @@ Create a function `isProductCategoryMatching` that:
 - Accepts a `product` of type `Product` and a `category` (string)
 - Returns `true` if the product’s category matches the given category
 **************************************************************/
+
+function isProductCategoryMatching(product: Product, category: string): boolean {
+    return product.category === category ? true : false;
+}
+////////console.log(isProductCategoryMatching(products[1], "Clothing"))
+
+
 
 // console.log(isProductCategoryMatching(products[1], "Clothing")); // true
 
@@ -53,8 +75,14 @@ Create a function `addProduct` that:
 - Adds the product to the array and returns the updated array
 **************************************************************/
 
-// const newProduct: Product = { id: 206, name: "Headphones", category: "Electronics", price: 149.99 };
-// console.log(addProduct(products, newProduct));
+const addProduct = (products: Product[], newProduct: Product): Product[] => {
+    products.push(newProduct);
+    return products;
+};
+
+const newProduct: Product = { id: 206, name: "Headphones", category: "Electronics", price: 149.99 };
+
+console.log(addProduct(products, newProduct));
 
 /**************************************************************
 ✅ Question 4:
@@ -62,6 +90,12 @@ Create a function `countElectronicsProducts` that:
 - Accepts an array of products
 - Returns the number of products in the "Electronics" category
 **************************************************************/
+
+function countElectronicsProducts (products: Product[]): number {
+    return products.filter(product => product.category === "Electronics").length;
+}
+console.log(countElectronicsProducts(products));
+
 
 // console.log(countElectronicsProducts(products));
 

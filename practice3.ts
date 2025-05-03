@@ -39,6 +39,12 @@ const employees: Employee[] = [
   sorted by salary in descending order
 **************************************************************/
 
+function getSortedEmployeesBySalary(department: string): Employee[] {
+  return employees.filter(employee => employee.department === department).map( (salary) => salary).sort((a,b) => a.salary -b.salary)
+}
+
+
+//console.log(getSortedEmployeesBySalary("Engineering"));
 // console.log(getSortedEmployeesBySalary("Engineering"));
 
 
@@ -48,6 +54,35 @@ const employees: Employee[] = [
 - Returns a new version of the employee with the updated salary
 - If no employee is found, return undefined
 **************************************************************/
+
+// function promoteEmployee (employeeId: number, amount: number): Employee[] {
+//    const filteredEmployeeSalary = employees.filter((employee) => employee.id === employeeId)
+ 
+// if (!employeeId){
+//   return []
+// } 
+
+// return {
+//   ...filteredEmployeeSalary[0],
+//  salary: filteredEmployeeSalary[0].salary + amount
+// }
+
+// }
+
+function promoteEmployee(employeeId: number, amount: number): Employee | [] {
+  const matchingEmployees = employees.filter((employee) => employee.id === employeeId)
+
+  if (!employeeId){
+    return []
+  }
+
+  return {
+    ...matchingEmployees[0],
+    salary: matchingEmployees[0].salary + amount
+  }
+}
+
+console.log(promoteEmployee(102, 500));
 
 // console.log(promoteEmployee(102, 500));
 
@@ -64,7 +99,7 @@ Create a function `getHighestPaidEmployee` that:
 
 
 /**************************************************************
-✅ Q4) filterBySalaryRange(min: number, max: number):
+✅ Q4) filterBySalaryRange(min: number, max: number): 
 - Returns employees whose salaries are within the given range (inclusive)
 - Sorted in ascending order of salary
 **************************************************************/

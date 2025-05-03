@@ -3,6 +3,14 @@
 **************************************/
 
 // ✅ Step 1: Create a `MenuItem` interface
+
+interface MenuItem {
+    id: number
+    name: string
+    category: string
+    price: number
+    ingredients: string []
+}
 /**********
  * The MenuItem interface should contain the following keys:
  * 1. id of type number
@@ -60,6 +68,11 @@ const menu: MenuItem[] = [
  - Returns the name of the item
 *************************************/
 
+function getMenuItemName (menu: MenuItem): string {
+    return menu.name 
+}
+console.log(getMenuItemName(menu[0]))
+
 
 // console.log(getMenuItemName(menu[0]));
 
@@ -70,6 +83,11 @@ const menu: MenuItem[] = [
  - Accepts a `MenuItem` and a `category` string
  - Returns true if the item belongs to that category
 *************************************/
+
+function isMenuItemInCategory (menu: MenuItem, category: string): boolean {
+    return menu.category === category ? true : false;
+}
+console.log(isMenuItemInCategory(menu[1], "Salad"))
 
 // console.log(isMenuItemInCategory(menu[1], "Salad"));
 
@@ -82,6 +100,12 @@ const menu: MenuItem[] = [
  - Returns the updated array
 *************************************/
 
+function addMenuItem (menu:MenuItem[], newMenuItem: MenuItem): MenuItem[] {
+    menu.push(newMenuItem);
+    return menu;
+}
+const newMenuItem: MenuItem = {id: 306, name: "Pizza", category: "Main Course", price: 14.99, ingredients: ["Dough", "Tomato Sauce", "Mozzarella", "Pepperoni"],};
+console.log(addMenuItem(menu, newMenuItem));
 
 // const newMenuItem: MenuItem = {
 //   id: 306,
@@ -100,6 +124,12 @@ const menu: MenuItem[] = [
  - Returns how many items are in the "Main Course" category
 *************************************/
 
+function countMainCourseItems (menu: MenuItem[]): number{
+     return menu.filter(menu => menu.category === "Main Course").length;
+}
+console.log(countMainCourseItems(menu));
+
+
 // console.log(countMainCourseItems(menu));
 
 /*************************************
@@ -108,6 +138,11 @@ const menu: MenuItem[] = [
  - Accepts a `MenuItem[]` and a `menuItemId` number
  - Returns a new array without the item that matches the ID
 *************************************/
+
+function removeMenuItemById (menu: MenuItem[], menuItemId: number): MenuItem[] {
+    return menu.filter(menuItem => menuItem.id !== menuItemId);
+}
+    console.log(removeMenuItemById(menu, 302));
 
 
 /*************************************
